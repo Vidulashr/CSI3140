@@ -1,0 +1,15 @@
+.pressed {
+    border: 2px solid #00BFFF;
+    color: #00BFFF;
+}
+
+td {
+    width: 75px;
+    height: 75px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weigth: bold;
+}
+
