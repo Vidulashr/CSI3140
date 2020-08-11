@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Question 2 - Number Guesser </title>
+</head>
+<body>
+    <h2> Guess the Number! </h2>
+    <p>Guess a number between 1 and 1000:</p>
+    <input type="number" id="guess"/>
+    <input type="button" id="Submission" value="Guess"/><br/>
+    <b><span id="results"></span></b>
+
+    <script type="text/javascript">
+        //Generates random number between 1 and 1000
+        const number = Math.floor((Math.random() * 1000) + 1);
+        const guessbutton = document.getElementById("Submission");
+        const guessvalue = document.getElementById("guess");
+        const results = document.getElementById("results");
+
+        //Function that informs whether guess is too low, high or correct
+        guessbutton.onclick=function () {
+            if ((guessvalue.value>1000)||(guessvalue.value<1)){
+                results.textContent = "Please enter valid guess (1-1000).";
+            }
+            else{
+                if (guessvalue.value<number){
+                    results.textContent = "Too Low. Try again.";
+                }
+                else if(guessvalue.value > number){
+                    results.textContent = "Too High. Try again.";
+                }
+                else{
+                    results.textContent = "Congratulations. You guessed the number!";
+                }}
+        }
+    </script>
+</body>
+</html>

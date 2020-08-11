@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+	<meta charset="utf-8">
+        <title>Question 6 - Palindrome Checker</title>
+    </head>
+
+    <body>
+	<label><h3>Enter a value to see if it is a palindrome</h3></label>
+	
+	<div>
+		<label>Enter : <input id ="num" type="number"/></label>
+		<label><button id="check"><b>CHECK</b></button></label>
+	</div>
+	
+	<b><label><p id="res">Results will be shown here</p></label></b>
+
+        <script>
+		check.onclick = function(){
+			if (num.value.length != 5){
+				alert("Number must have 5 digits");
+				return;}
+
+			if (num.value[0] == 0){
+				alert("Number must not start with 0");
+				return;}
+
+			var result = "";
+			for (var i =4;i>=0;i--){
+				result += num.value[i];}
+
+			var numvalue = parseInt(result);
+
+			if (numvalue == parseInt(num.value)){
+				res.textContent ="It is a Palindrome";}
+			else{
+				res.textContent="It is NOT a Palindrome";}
+			}
+	</script>
+
+    </body>
+
+</html>

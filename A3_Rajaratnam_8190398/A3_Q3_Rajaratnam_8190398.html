@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Question 3 - Number Guesser with Count </title>
+</head>
+<body>
+    <h2> Guess the Number! </h2>
+    <p>Guess a number between 1 and 1000:</p>
+    <input type="number" id="guess"/>
+    <input type="button" id="Submission" value="Guess"/><br/>
+    <a><b>Number of tries: </b></a><a id="try">0</a><br/>
+    <b><span id="results"></span></b><br/>
+    <b><span id="message"></span></b>
+
+
+    <script type="text/javascript">
+        //Generates random number between 1 and 1000
+        const number = Math.floor((Math.random() * 1000) + 1);
+	//Elements
+        const guessbutton = document.getElementById("Submission");
+        const guessvalue = document.getElementById("guess");
+        const results = document.getElementById("results");
+        const tries = document.getElementById("try");
+        const message = document.getElementById("message");
+	//Counts number of attempts
+        let count = 0;
+
+        //Function that informs whether guess is too low, high or correct
+        guessbutton.onclick=function () {
+            //Makes sure input is not below 1 and above 1000, also that it is not a letter
+            if ((guessvalue.value>1000)||(guessvalue.value<1)||(isNaN(guessvalue.value))){
+                results.textContent = "Wrong input! You should enter a number between 1 and 1000.";
+            }
+            //If valid entry
+            else{
+                if (guessvalue.value<number){
+                    results.textContent = "Too Low. Try again.";
+                    count ++; //increment try count
+                    tries.textContent = count; //modify element
+                }
+                else if(guessvalue.value > number){
+                    results.textContent = "Too High. Try again.";
+                    count ++;//increment try count
+                    tries.textContent = count; //modify element
+                }
+                else{
+                    count ++; //increment try count
+                    tries.textContent = count; //modify element
+                    if (count<10){ //If guessed on try below 10
+                        message.textContent = "Either you know the secret or you got lucky!";
+                    }
+                    else if (count===10){ //If guessed on 10th try
+                        message.textContent = "Ahah! You know the secret!";
+                    }
+                    else{ //If guessed on try greater than 10
+                        message.textContent = "You should be able to do better!";
+                    }
+                    results.textContent = "Congratulations. You guessed the number!";
+                }}
+        }
+    </script>
+</body>
+</html>

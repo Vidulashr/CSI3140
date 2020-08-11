@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset = "utf-8"/>
+        <title>Question 7 - Product Price</title>
+	<style type="text/css">
+	    html{
+		font-family:Calibri;
+		font-size: large;}
+            table, th, td {
+  		border: 1px solid black;}
+	    table {
+ 		 width: 100%;}
+	    th {
+  		height: 50px;}
+        </style>
+    </head>
+    <body>
+            <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th># Sold</th>
+                    <th>Product Price ($)</th>
+                    <th>Total ($)</th>
+                </tr>
+            </thead>
+            <tbody id="Final">
+	    </tbody>
+        </table>
+        <script>
+	     //Initializes the products with prices and amoutn sold as 0
+             var products = [
+                {price: 2.98,solds: 0},
+                {price: 4.50,solds: 0},
+                {price: 9.98,solds: 0},
+                {price: 4.49,solds: 0},
+                {price: 6.87,solds: 0}];
+
+	    //Prompts user to enter the product number
+            var inp = prompt("Enter product # (1-5), Enter blank to Exit: ");
+	    //While user inputs a number, enter the while loop
+            while (inp.length!=0) {
+		//If number is not 0-5 or user did not enter an number, send message and prompt again
+                if (parseInt(inp) < 0 || parseInt(inp) > 5 ||isNaN(inp)) {
+                    inp = prompt("INVALID! Enter product # (1-5), Enter blank to Exit: ");
+                    continue;}
+		//Next prompt user to enter how many sold
+                var sold = prompt("Enter amount sold, Enter blank to Exit: ");
+		//If user does not enter any value, exit while loop
+ 		if (sold.length==0) {
+                    break;}
+		//If user enters negative value or not a number, send message and prompt again
+                while (parseInt(sold)<0||isNaN(sold)) {
+                    if (sold.length==0) {
+                        break;}
+                    sold = prompt("INVALID! Enter amount sold, Enter blank to Exit: ");}
+
+		//Using switch statement to determine as mentioned in assignment
+		var int_sold = parseInt(sold);
+                switch (parseInt(inp)) {
+                    case 1: //If product 1 was selected, add amount sold to that product
+                        products[0].solds += int_sold;
+                        break;
+                    case 2: //If product 2 was selected, add amount sold to that product
+                        products[1].solds += int_sold;
+                        break;
+                    case 3://If product 3 was selected, add amount sold to that product
+                        products[2].solds += int_sold;
+                        break;
+                    case 4://If product 4 was selected, add amount sold to that product
+                        products[3].solds += int_sold;
+                        break;
+                    case 5://If product 5 was selected, add amount sold to that product
+                        products[4].solds += int_sold;}
+		//Loops prompt, till user enters null
+                inp = prompt("Enter product # (1-5), Enter blank to Exit: ");
+            }
+	    //Initializes product id to add to table and total money for all products as 0
+	    var productid = 1;
+	    var total= 0;
+	    //Loops through all the products
+            products.forEach(function(value, key) {
+		//Creates a row for each product details and adds its values
+                var pro_name = document.createElement('td');
+		pro_name.textContent = productid;
+                var pro_sold = document.createElement('td');
+		pro_sold.textContent = value.solds;
+                var pro_price = document.createElement('td');
+		pro_price.textContent = value.price;
+                var pro_sales = document.createElement('td');
+		pro_sales.textContent = value.price * value.solds;
+		total += value.price * value.solds;
+		var pro_row = document.createElement('tr');
+		//Adds all details to the main row
+                pro_row.appendChild(pro_name);
+                pro_row.appendChild(pro_sold);
+                pro_row.appendChild(pro_price);
+                pro_row.appendChild(pro_sales);
+		//Adds row to the main table
+                Final.appendChild(pro_row)
+		//Increments product id for next product 
+		productid++;});
+            //creates a file row for the total sales and adds it to final table
+	    var total_row = document.createElement('tr');
+	    total_row.textContent = "OVERALL SALES =" + total + "$";
+	    Final.appendChild(total_row)
+        </script>
+    </body>
+</html>

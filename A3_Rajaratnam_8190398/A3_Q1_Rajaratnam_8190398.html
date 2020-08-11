@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Question 1 - Temperature Converter </title>
+</head>
+<body>
+    <input type="number" step="0.1" id="inp"/>
+    <div>
+        <input type="button" id="Celsius" value="To Celcius"/><br/>
+        <input type="button" id="Fahrenheit" value="To Fahrenheit"/>
+    </div>
+    <b><span id="conversion"></span></b>
+    <script type="text/javascript">
+        const celsiusButton = document.getElementById("Celsius");
+        const fahrenheitButton = document.getElementById("Fahrenheit");
+        const conversionResults = document.getElementById("conversion");
+        const input = document.getElementById("inp");
+        //Question a: Converts from fahrenheit to celcius
+        celsiusButton.onclick=function celcius() {
+            var conversion = (input.value - 32) * 5 / 9;
+            conversionResults.textContent = conversion+ " degrees celcius";
+        }
+        //Question b: Converts from celcius to fahrenheit
+        fahrenheitButton.onclick=function fahrenheit() {
+            var conversion = input.value * 9 / 5 + 32;
+            conversionResults.textContent = conversion+ " degrees fahrenheit";
+        }
+    </script>
+</body>
+</html>

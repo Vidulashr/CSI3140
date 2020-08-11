@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 7</title>
+        
+    </head>
+    <body>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Num Sold</th>
+                    <th>Individual Price</th>
+                    <th>Total price</th>
+                </tr>
+            </thead>
+            <tbody id="Results">
+            </tbody>
+        </table>
+
+        <script>
+           //An object mapping the products to their quantities and prices
+            var products = [
+              	{price: 2.98,
+                 quantity: 0},
+                {price: 4.50,
+                 quantity: 0},
+                {price: 9.98,
+                 quantity: 0},
+                {price: 4.49,
+                 quantity: 0},
+                {price: 6.87,
+                 quantity: 0}];
+
+            //prompt the user for some input
+            var inp = prompt("What is the product number? (1-5)");
+
+            //validate the input, pressing cancel closes the popup and displays the table
+            while (inp != null) {
+
+                //validate the number is legitimately a product number
+                if (isNaN(inp) || parseInt(inp) < 0 || parseInt(inp) > 5) {
+                    inp = prompt("Invalid option! What is the product number? (1-5)");
+                    continue;
+                }
+
+                //determine how many were purchased
+                var amount = prompt("How many were purchased?");
+                while (isNaN(amount) || parseInt(amount) < 0) {
+                    if (amount == null) {
+                        break;
+                    }
+                    amount = prompt("How many were purchased? (>= 0)");
+
+                }
+
+                //if cancel is pressed display the results
+                if (amount == null) {
+                    break;
+                }
+
+                switch (parseInt(inp)) {
+                    case 1:
+                        products[0].quantity += parseInt(amount);
+                        break;
+                    case 2:
+                        products[1].quantity += parseInt(amount);
+                        break;
+                    case 3:
+                        products[2].quantity += parseInt(amount);
+                        break;
+                    case 4:
+                        products[3].quantity += parseInt(amount);
+                        break;
+                    case 5:
+                        products[4].quantity += parseInt(amount);
+                }
+
+                //prompt for next product
+                amount = prompt("What is the product number? (1-5)", "product number");
+            }
+
+            //create the table
+						var productid = 1;
+            products.forEach(function(value, key) {
+
+                //for each item we want to create a row & container for the data
+                var product_row = document.createElement('tr');
+                var product_name = document.createElement('td');
+                var product_sold = document.createElement('td');
+                var product_price = document.createElement('td');
+                var product_sale = document.createElement('td');
+
+                //Fill the table data in
+                product_name.textContent = "Product " + productid;
+                product_sold.textContent = value.quantity;
+                product_price.textContent = value.price;
+                product_sale.textContent = value.price * value.quantity;
+
+                //Append the data to the row
+                product_row.appendChild(product_name);
+                product_row.appendChild(product_sold);
+                product_row.appendChild(product_price);
+                product_row.appendChild(product_sale);
+              	productid++;
+
+                //append the row to the table body
+                Results.appendChild(product_row);
+            });
+        </script>
+    </body>
+</html>

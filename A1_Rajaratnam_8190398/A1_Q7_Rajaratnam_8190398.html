@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+        <title>Question 7 – Registration </title>
+
+    </head>
+     <body>
+      <h1> Registration Form: </h1>
+       <form autocomplete="on">
+	<b> Please fill in mandatory fields below:</b>
+            <p>
+                <label> Your First Name:
+                    <input type="text" name="firstname" placeholder="Type First name here..." required>
+                </label><label><b>(First Name)</b></label>
+            </p>
+            <p>
+                <label>Your Last Name:
+                    <input type="text" name="lastname" placeholder="Type Last name here..."required>
+                </label><label><b>(Last Name)</b></label>
+            </p>
+            <p>
+                <label>Your Email:
+                    <input type="text" name="email" placeholder="Type email here..." required>
+                </label> <label><b>(email@domain.com)</b></label>
+            </p>
+            <div>
+                <details>
+                    <summary><b><i>Optional Survey</i></b></summary>
+		      <label><b>What year in University are you?:</b></label>
+			<p>
+			<label>Not in University
+                    	<input type="radio" name="opt" value="0" checked>
+                	</label><br>
+                	<label>Freshman
+                    	<input type="radio" name="opt" value="1">
+                	</label><br>
+                	<label>Sophomore
+                    	<input type="radio" name="opt" value="2">
+                	</label><br>
+                	<label>Junior
+                    	<input type="radio" name="opt" value="3">
+                	</label><br>
+			<label>Senior
+                    	<input type="radio" name="opt" value="4">
+                	</label><br>
+			<label>Graduate
+                    	<input type="radio" name="opt" value="5+">
+                	</label><br>
+                    </p>
+                </details>
+            </div>
+          <input type="submit"/> <input type="reset">
+       </form>
+    </body>
+</html>

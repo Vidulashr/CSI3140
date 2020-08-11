@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+	<meta charset="utf-8">
+        <title>Question 5 - Multiple Checker</title>
+    </head>
+
+    <body>
+	<label> <h3>Enter A to see if its a multiple of B</h3> </label>
+	<div>
+        <label>Number A = <input id="one" type="number" min="1" value="1"/></label>
+        <br/>
+        <label>Number B = <input id="two" type="number" min="1" value="1"/></label>
+        </div>
+	<br/>
+	<div><button id = "check"><b>CHECK</b></button></div>
+
+        <h3><div id="statement">
+            Input numbers and check to see results.
+        </div></h3>
+
+        <script>
+            check.onclick = function () {
+		if (one.value.length == 0 || two.value.length ==0){
+			alert("Please fill-in BOTH values");}
+                statement.textContent = "A is " + (one.value % two.value == 0 ? "" : "not") + " a multiple of B.";
+		}
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+	
+	<meta charset = "utf-8"/>
+        <title>Question 7 - Product Price</title>
+
+	<style type="text/css">
+	    html{
+		font-family:Calibri;
+		font-size: large;}
+            table, th, td {
+  		border: 1px solid black;}
+	    table {
+ 		 width: 100%;}
+	    th {
+  		height: 50px;}
+        </style>
+
+    </head>
+
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th># Sold</th>
+                    <th>Product Price ($)</th>
+                    <th>Total ($)</th>
+                </tr>
+            </thead>
+            <tbody id="Final">
+	    </tbody>
+        </table>
+
+        <script>
+	     
+             var products = [
+                {price: 2.98,
+                 solds: 0},
+                {price: 4.50,
+                 solds: 0},
+                {price: 9.98,
+                 solds: 0},
+                {price: 4.49,
+                 solds: 0},
+                {price: 6.87,
+                 solds: 0}];
+
+            var inp = prompt("Enter product # (1-5): ", "Enter #...");
+
+            while (inp != null) {
+
+                if (parseInt(inp) < 0 || parseInt(inp) > 5 ||isNaN(inp)) {
+                    inp = prompt("INVALID! Enter product # (1-5): ", "Enter #...");
+                    continue;}
+
+                var sold = prompt("Enter amount sold: ", "Enter amount...");
+
+ 		if (sold == null) {
+                    break;}
+
+                while (parseInt(sold)<0||isNaN(sold)) {
+                    if (sold == null) {
+                        break;}
+                    sold = prompt("INVALID! Enter amount sold: ", "Enter amount...");}
+
+
+		var int_sold = parseInt(sold);
+                switch (parseInt(inp)) {
+                    case 1:
+                        products[0].solds += int_sold;
+                        break;
+                    case 2:
+                        products[1].solds += int_sold;
+                        break;
+                    case 3:
+                        products[2].solds += int_sold;
+                        break;
+                    case 4:
+                        products[3].solds += int_sold;
+                        break;
+                    case 5:
+                        products[4].solds += int_sold;}
+
+                inp = prompt("Enter product # (1-5): ", "Enter #...");
+            }
+
+	    var productid = 1;
+	    var total= 0;
+            products.forEach(function(value, key) {
+                
+                var pro_name = document.createElement('td');
+		pro_name.textContent = productid;
+                var pro_sold = document.createElement('td');
+		pro_sold.textContent = value.solds;
+                var pro_price = document.createElement('td');
+		pro_price.textContent = value.price;
+                var pro_sales = document.createElement('td');
+		pro_sales.textContent = value.price * value.solds;
+		total += value.price * value.solds;
+		var pro_row = document.createElement('tr');
+
+                pro_row.appendChild(pro_name);
+                pro_row.appendChild(pro_sold);
+                pro_row.appendChild(pro_price);
+                pro_row.appendChild(pro_sales);
+
+                Final.appendChild(pro_row)
+		productid++;});
+
+	    var total_row = document.createElement('tr');
+	    total_row.textContent = "OVERALL SALES =" + total + "$";
+	    Final.appendChild(total_row)
+	
+        </script>
+
+    </body>
+
+</html>
